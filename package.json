@@ -1,6 +1,6 @@
 {
   "name": "skucli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "./build/index.js",
   "bin": {
@@ -15,6 +15,7 @@
     "select-project": "ibmcloud ce project select -n ieam",
     "select-target": "ibmcloud target -g Default",
     "switch-region": "ibmcloud cr region-set ${region} && ibmcloud cr login",
+    "postinstall": "ts-node bin/install.ts",
     "pre-commit": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"

@@ -5,8 +5,13 @@ export declare class Main {
     config: any;
     region: any;
     project: any;
+    image: any;
+    name: any;
+    port: any;
+    replica: any;
+    type: any;
     utils: Utils;
-    constructor(cluster: any, namespace: any, config: any, region: any, project: any);
+    constructor(cluster: any, namespace: any, config: any, region: any, project: any, image: any, name: any, port: any, replica: any, type: any);
     inititialise(): void;
     ibmSwitchRegion(): import("rxjs").Observable<unknown>;
     ibmLogin(): import("rxjs").Observable<unknown>;
@@ -19,4 +24,13 @@ export declare class Main {
     createLink(): import("rxjs").Observable<unknown>;
     createToken(): import("rxjs").Observable<unknown>;
     setup(): import("rxjs").Observable<unknown>;
+    status(): import("rxjs").Observable<unknown>;
+    initWithoutIngress(): import("rxjs").Observable<unknown>;
+    retrievePassword(): import("rxjs").Observable<unknown>;
+    deployFrontend(): import("rxjs").Observable<unknown>;
+    deployBackend(): import("rxjs").Observable<unknown>;
+    deployService(): import("rxjs").Observable<unknown>;
+    exposeService(): import("rxjs").Observable<unknown>;
+    showService(): import("rxjs").Observable<unknown>;
+    deleteService(): import("rxjs").Observable<unknown>;
 }

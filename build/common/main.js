@@ -3,12 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Main = void 0;
 const utils_1 = require("./utils");
 class Main {
-    constructor(cluster, namespace, config, region, project) {
+    constructor(cluster, namespace, config, region, project, image, name, port, replica, type) {
         this.cluster = cluster;
         this.namespace = namespace;
         this.config = config;
         this.region = region || 'us-south';
         this.project = project || 'ieam';
+        this.image = image;
+        this.name = name;
+        this.port = port;
+        this.replica = replica || 0;
+        this.type = type || 'ClusterIP';
         this.inititialise();
     }
     inititialise() {
@@ -46,6 +51,33 @@ class Main {
     }
     setup() {
         return this.utils.setup();
+    }
+    status() {
+        return this.utils.status();
+    }
+    initWithoutIngress() {
+        return this.utils.initWithoutIngress();
+    }
+    retrievePassword() {
+        return this.utils.retrievePassword();
+    }
+    deployFrontend() {
+        return this.utils.deployFrontend(this.image);
+    }
+    deployBackend() {
+        return this.utils.deployBackend(this.image);
+    }
+    deployService() {
+        return this.utils.deployService(this.name, this.image, this.replica);
+    }
+    exposeService() {
+        return this.utils.exposeService(this.name, this.port, this.type);
+    }
+    showService() {
+        return this.utils.showService(this.name);
+    }
+    deleteService() {
+        return this.utils.deleteService(this.name);
     }
 }
 exports.Main = Main;

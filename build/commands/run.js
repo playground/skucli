@@ -21,7 +21,12 @@ const builder = (yargs) => yargs
     namespace: { type: 'string', desc: 'Name of namespace' },
     config: { type: 'string', desc: 'Name of kubeconfig' },
     region: { type: 'string', desc: 'Region to deploy to' },
-    project: { type: 'string', desc: 'Project name' }
+    project: { type: 'string', desc: 'Project name' },
+    image: { type: 'string', desc: 'Docker image name' },
+    name: { type: 'string', desc: 'Service name' },
+    port: { type: 'string', desc: 'Port number' },
+    replica: { type: 'string', desc: 'Replica number' },
+    type: { type: 'string', desc: 'Type of service: ClusterIP, NodePort, LoadBalancer, or ExternalName' }
 })
     .positional('action', {
     type: 'string',
@@ -32,8 +37,8 @@ exports.builder = builder;
 const handler = (argv) => {
     (0, clear_1.default)();
     console.log(chalk_1.default.greenBright(figlet_1.default.textSync('skucli', { horizontalLayout: 'full' })));
-    const { action, cluster, namespace, config, region, project } = argv;
-    const skucli = new main_1.Main(cluster, namespace, config, region, project);
+    const { action, cluster, namespace, config, region, project, image, name, port, replica, type } = argv;
+    const skucli = new main_1.Main(cluster, namespace, config, region, project, image, name, port, replica, type);
     skucli.inititialise();
     console.log('action: ', action);
     if (skucli[action]) {

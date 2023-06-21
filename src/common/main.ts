@@ -6,19 +6,34 @@ export class Main {
   config;
   region;
   project;
+  image;
+  name;
+  port;
+  replica;
+  type;
   utils: Utils;
   constructor(
     cluster,
     namespace,
     config,
     region,
-    project
+    project,
+    image,
+    name,
+    port,
+    replica,
+    type
   ) {
     this.cluster = cluster;
     this.namespace = namespace;
     this.config = config;
     this.region = region || 'us-south';
     this.project = project || 'ieam';
+    this.image = image;
+    this.name = name;
+    this.port = port;
+    this.replica = replica || 0;
+    this.type = type || 'ClusterIP'
     this.inititialise();
   }
 
@@ -57,5 +72,32 @@ export class Main {
   }
   setup() {
     return this.utils.setup();
+  }
+  status() {
+    return this.utils.status();
+  }
+  initWithoutIngress() {
+    return this.utils.initWithoutIngress();
+  }
+  retrievePassword() {
+    return this.utils.retrievePassword();
+  }
+  deployFrontend() {
+    return this.utils.deployFrontend(this.image);
+  }
+  deployBackend() {
+    return this.utils.deployBackend(this.image);
+  }
+  deployService() {
+    return this.utils.deployService(this.name, this.image, this.replica);
+  }
+  exposeService() {
+    return this.utils.exposeService(this.name, this.port, this.type);
+  }
+  showService() {
+    return this.utils.showService(this.name);
+  }
+  deleteService() {
+    return this.utils.deleteService(this.name);
   }
 }

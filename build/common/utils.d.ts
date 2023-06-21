@@ -6,7 +6,16 @@ export declare class Utils {
     cwd: any;
     constructor();
     initialise(): void;
+    status(): Observable<unknown>;
     setup(): Observable<unknown>;
+    initWithoutIngress(): Observable<unknown>;
+    deployFrontend(image: string): Observable<unknown>;
+    deployBackend(image: string, replicas?: number): Observable<unknown>;
+    deployService(name: string, image: string, replica?: number): Observable<unknown>;
+    exposeService(service: string, port: string, type: string): Observable<unknown>;
+    showService(service: string): Observable<unknown>;
+    deleteService(service: string): Observable<unknown>;
+    retrievePassword(): Observable<unknown>;
     ibmLogin(): Observable<unknown>;
     ibmListCluster(): Observable<unknown>;
     ibmConfigCluster(cluster: string): Observable<unknown>;
