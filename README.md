@@ -9,7 +9,7 @@ npm install -g skucli
 
 # Available commands
 ```
-action  Available actions: createNamespace deleteService deployService
+Available actions: createNamespace deleteService deployService
         exposeService ibmConfigCluster ibmListCluster ibmLogin ibmSetup
         ibmSwitchRegion initWithoutIngress installRouteInNamespace
         retrievePassword setCurrentNamespace setKubeConfig setup showService
